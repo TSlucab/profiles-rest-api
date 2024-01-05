@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5sa!v6qg@%mpgy+tsmq)$p*j4of=&g8_zdi&z30nt3rd8*69)t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG', 1))) # SET IN dist/supervisor_profiles_api.conf
 
 ALLOWED_HOSTS = []
 
@@ -122,4 +122,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'profiles_api.UserProfile'                    # looks for model called UserProfile in profiles_api folder
+AUTH_USER_MODEL = 'profiles_api.UserProfile'                 # looks for model called UserProfile in profiles_api folder
+
+STATIC_ROOT = 'static/'
